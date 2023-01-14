@@ -1,5 +1,8 @@
 -- Use Packer to manage plugins
 
+require("plugin_config.toggleterm")
+
+
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
@@ -19,6 +22,9 @@ return require('packer').startup(function()
   --   use Ctrl+] to cd into a dir
   use 'kyazdani42/nvim-tree.lua'
   require'nvim-tree'.setup{}
+
+  -- toggleterm
+  use "akinsho/toggleterm.nvim"
 
   -- for native lsp & key config
   use 'neovim/nvim-lspconfig'
