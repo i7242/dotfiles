@@ -8,7 +8,7 @@
 -- Basic editor settings, won't be a lot
 require("basics")
 
--- Customerized key maps
+-- Customerized key maps for nvim
 require("keymaps")
 
 -- More advanced plugins, including themes

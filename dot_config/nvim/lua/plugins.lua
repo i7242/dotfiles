@@ -1,6 +1,7 @@
 -- Use Packer to manage plugins
 
 require("plugin_config.toggleterm")
+require("plugin_config.nvimtree")
 
 
 local execute = vim.api.nvim_command
@@ -14,6 +15,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function()
+
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -23,7 +25,7 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-tree.lua'
   require'nvim-tree'.setup{}
 
-  -- toggleterm
+  -- toggleterm, details in config file
   use "akinsho/toggleterm.nvim"
 
   -- for native lsp & key config
@@ -45,9 +47,6 @@ return require('packer').startup(function()
 
   -- Git integration
   use 'tpope/vim-fugitive'
-
-  -- send script to REPL in tmux
-  use 'jpalardy/vim-slime'
 
   -- setup telescope for fuzzy find
   use 'nvim-lua/popup.nvim'

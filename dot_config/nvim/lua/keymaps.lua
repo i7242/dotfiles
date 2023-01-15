@@ -8,10 +8,10 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- test some mapping
-map('', '<leader>y', '"+y')        -- Copy to clipboard in normal, visual, select and operator modes
+-- test some mapping, copy to clipboard in normal, visual, select and operator modes
+map('', '<leader>y', '"+y')
 
--- "navigate" dir
+-- nvim tree
 map('n', '<C-n>', ':NvimTreeToggle<CR>')
 
 -- quick move between windows
