@@ -1,0 +1,7 @@
+{{- $personal := eq .chezmoi.osRelease.id "manjaro" }}
+
+{{- if not $personal }}
+
+.gitconfig
+
+{{- end }}
