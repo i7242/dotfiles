@@ -1,0 +1,13 @@
+#!/bin/bash
+
+{{- $manjaro := eq .chezmoi.osRelease.id "manjaro" }}
+
+{{- if $manjaro }}
+
+echo "installing tools for manjaro linux, may require password and confirmation"
+
+sudo pacman -Syu neofetch \
+tldr \
+neovim
+
+{{- end }}
