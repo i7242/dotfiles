@@ -1,4 +1,3 @@
-{{- /* always ignore the github readme */ }}
 README.md
 
 {{- $manjaro := eq .chezmoi.osRelease.id "manjaro" }}
