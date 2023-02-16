@@ -21,7 +21,7 @@
         wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim.appimage
         chmod +x nvim.appimage
         ./nvim.appimage --appimage-extract
-        alias nv >/dev/null || echo "alias nv='~/squashfs-root/usr/bin/nvim'" >> .zshrc
+        command -v nv >/dev/null || echo "alias nv='~/squashfs-root/usr/bin/nvim'" >> .zshrc
         source .zshrc
         rm nvim.appimage
     fi
