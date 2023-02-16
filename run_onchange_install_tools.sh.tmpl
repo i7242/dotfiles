@@ -19,7 +19,7 @@
     wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim.appimage
     chmod +x nvim.appimage
     ./nvim.appimage --appimage-extract
-    echo "alias nv='~/squashfs-root/usr/bin/nvim'"
+    echo "alias nv='~/squashfs-root/usr/bin/nvim'" >> .zshrc
     rm nvim.appimage
 
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
