@@ -6,8 +6,9 @@
 
     echo "installing tools for manjaro linux, may require password and confirmation"
 
-    sudo pacman -Syu neofetch tldr neovim
+    sudo pacman -Syu --needed neofetch tldr neovim
 
+    [ ! -d "$HOME/.local/share/nvim/site/pack/packer/" ] && \
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
      ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
@@ -15,14 +16,17 @@
 
     echo "installing tools AL2, may require password and confirmation"
 
-    cd
-    wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim.appimage
-    chmod +x nvim.appimage
-    ./nvim.appimage --appimage-extract
-    echo "alias nv='~/squashfs-root/usr/bin/nvim'" >> .zshrc
-    source .zshrc
-    rm nvim.appimage
+    if [ ! -f "$HOME/squashfs-root/usr/bin/nvim" ]; then
+        cd
+        wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim.appimage
+        chmod +x nvim.appimage
+        ./nvim.appimage --appimage-extract
+        alias nv >/dev/null || echo "alias nv='~/squashfs-root/usr/bin/nvim'" >> .zshrc
+        source .zshrc
+        rm nvim.appimage
+    fi
 
+    [ ! -d "$HOME/.local/share/nvim/site/pack/packer/" ] && \
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
      ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
