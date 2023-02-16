@@ -20,6 +20,7 @@
     chmod +x nvim.appimage
     ./nvim.appimage --appimage-extract
     echo "alias nv='~/squashfs-root/usr/bin/nvim'" >> .zshrc
+    source .zshrc
     rm nvim.appimage
 
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
