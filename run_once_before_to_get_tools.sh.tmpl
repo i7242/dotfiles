@@ -1,19 +1,25 @@
 #!/bin/bash
 
-{{- $install := promptBool "do you want to install development tools? (y/n)" }}
+{{- $install := "n" }}
 {{- $manjaro := eq .chezmoi.osRelease.id "manjaro" }}
 
-{{- if $install }}
+{{- if eq $install "y" }}
 
-  {{- if $manjaro }}
-    echo "installing tools for manjaro linux, may require password and confirmation"
+  {{- if eq .chezmoi.os "linux"}}
 
-    sudo pacman -Syu neofetch \
-    tldr \
-    neovim
+    {{- if eq .chezmoi.osRelease.id "manjaro"}}
 
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+      echo "installing tools for manjaro linux, may require password and confirmation"
+
+      sudo pacman -Syu neofetch \
+      tldr \
+      neovim
+
+      git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+       ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+    {{- end }}
+
   {{- end }}
 
 {{- else }}

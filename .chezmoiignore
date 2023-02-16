@@ -1,9 +1,9 @@
 README.md
 
-{{- $manjaro := eq .chezmoi.osRelease.id "manjaro" }}
+{{- if eq .chezmoi.os "linux"}}
 
-{{- if not $manjaro }}
-
-.gitconfig
+  {{- if eq .chezmoi.osRelease.id "manjaro"}}
+    .gitconfig
+  {{- end }}
 
 {{- end }}
