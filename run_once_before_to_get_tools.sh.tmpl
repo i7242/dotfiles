@@ -1,7 +1,6 @@
 #!/bin/bash
 
 {{- $install := "n" }}
-{{- $manjaro := eq .chezmoi.osRelease.id "manjaro" }}
 
 {{- if eq $install "y" }}
 
@@ -18,12 +17,29 @@
       git clone --depth 1 https://github.com/wbthomason/packer.nvim\
        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+    {{- else if eq .chezmoi.osRelease.id "amzn"}}
+
+      echo "installing tools AL2, may require password and confirmation"
+
+      cd
+      wget https://github.com/neovim/neovim/releases/download/v0.8.3/nvim.appimage
+      chmod u+x nvim.appimage
+      ./nvim.appimage --appimage-extract
+      sudo ln ~/squashfs-root/usr/bin/nvim /usr/bin/nvim
+
+      git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+       ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+    {{- else }}
+
+      echo "skip dev tool installation because no matching linux distro ..."
+
     {{- end }}
 
   {{- end }}
 
 {{- else }}
 
-  echo "skipped dev tool installation..."
+  echo "skip dev tool installation based on install flag ..."
 
 {{- end }}
