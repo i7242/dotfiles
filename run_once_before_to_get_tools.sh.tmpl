@@ -26,6 +26,7 @@
       chmod u+x nvim.appimage
       ./nvim.appimage --appimage-extract
       sudo ln ~/squashfs-root/usr/bin/nvim /usr/bin/nvim
+      rm nvim.appimage
 
       git clone --depth 1 https://github.com/wbthomason/packer.nvim\
        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
