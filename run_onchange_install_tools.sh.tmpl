@@ -7,6 +7,7 @@
     echo "installing tools for manjaro linux, may require password and confirmation"
 
     sudo pacman -Syu --needed neofetch tldr neovim
+    command -v nv >/dev/null || echo "alias nv='nvim'" >> .zshrc
 
     [ ! -d "$HOME/.local/share/nvim/site/pack/packer/" ] && \
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
