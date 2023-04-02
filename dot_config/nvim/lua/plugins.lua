@@ -1,9 +1,5 @@
 -- Use Packer to manage plugins
 
-require("plugin_config.toggleterm")
-require("plugin_config.nvimtree")
-
-
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
@@ -23,10 +19,22 @@ return require('packer').startup(function()
   --   use Ctrl+n to switch
   --   use Ctrl+] to cd into a dir
   use 'kyazdani42/nvim-tree.lua'
-  require'nvim-tree'.setup{}
+  require("nvim-tree").setup({
+      view = {
+          adaptive_size = true
+      }
+  })
 
-  -- toggleterm, details in config file
+  -- toggleterm
+  --   Ctrl+e will send visual selected code to default terminal
+  --   this can be line selection or block selection
   use "akinsho/toggleterm.nvim"
+  require("toggleterm").setup{
+    open_mapping = [[<c-\>]],
+    direction = 'float'
+  }
+  local options = {noremap = true}
+  vim.api.nvim_set_keymap('v', '<C-e>', ':ToggleTermSendVisualSelection<CR>', options)
 
   -- for native lsp & key config
   use 'neovim/nvim-lspconfig'
