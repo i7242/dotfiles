@@ -2,9 +2,7 @@
 
 local execute = vim.api.nvim_command
 local fn = vim.fn
-
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
 if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
   execute 'packadd packer.nvim'
@@ -12,9 +10,15 @@ end
 
 return require('packer').startup(function()
 
+  ------------------------------------------
+  --            Packer Itself             --
+  ------------------------------------------
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  ------------------------------------------
+  --         General Core Plugins         --
+  ------------------------------------------
   -- tree like nerdtree
   --   use Ctrl+n to switch
   --   use Ctrl+] to cd into a dir
@@ -36,30 +40,45 @@ return require('packer').startup(function()
   local options = {noremap = true}
   vim.api.nvim_set_keymap('v', '<C-e>', ':ToggleTermSendVisualSelection<CR>', options)
 
-  -- for native lsp & key config
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-compe'
-
-  -- for Julia
-  use 'JuliaEditorSupport/julia-vim'
-
-  -- highlight interesting words
-  --   use <leader>k to highlight current word
-  use 'lfv89/vim-interestingwords'
-
-  -- indent line, every 4 space, for manual formatting
-  use 'yggdroot/indentline'
-
-  -- startify, start screen
-  use 'mhinz/vim-startify'
-
-  -- Git integration
-  use 'tpope/vim-fugitive'
-
   -- setup telescope for fuzzy find
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
+
+  -- enable neovim lsp support
+  use 'neovim/nvim-lspconfig'
+  -- use Mason to manage lsp languages
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate"
+  }
+  require("mason").setup()
+
+  -- code auto complete
+  use 'hrsh7th/nvim-compe'
+
+  -- Git integration
+  use 'tpope/vim-fugitive'
+
+  ------------------------------------------
+  --           Language Specific          --
+  ------------------------------------------
+  -- for Julia
+  use 'JuliaEditorSupport/julia-vim'
+
+  ------------------------------------------
+  --          Visual Improvements         --
+  ------------------------------------------
+  -- startify, start screen
+  use 'mhinz/vim-startify'
+
+  -- highlight interesting words
+  --   by default, use <leader>k to highlight current word
+  --   use <leader>K to remove all highlights
+  use 'lfv89/vim-interestingwords'
+
+  -- indent line, every 4 space, for manual formatting
+  use 'yggdroot/indentline'
 
   -- colorscheme
   use 'cocopon/iceberg.vim'
