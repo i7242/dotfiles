@@ -48,10 +48,7 @@ return require('packer').startup(function()
   -- enable neovim lsp support
   use 'neovim/nvim-lspconfig'
   -- use Mason to manage lsp languages
-  use {
-    "williamboman/mason.nvim",
-    run = ":MasonUpdate"
-  }
+  use "williamboman/mason.nvim"
   require("mason").setup()
 
   -- code auto complete
