@@ -45,17 +45,23 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
 
-  -- enable neovim lsp support
-  use 'neovim/nvim-lspconfig'
-  -- use Mason to manage lsp languages
+  -- Git integration
+  use 'tpope/vim-fugitive'
+
+  ------------------------------------------
+  --                  LSP                 --
+  ------------------------------------------
+  use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
   require("mason").setup()
+  require("mason-lspconfig").setup({
+    ensure_installed = {"sumneko_lua"}
+  })
+  require("lspconfig").sumneko_lua.setup {}
 
   -- code auto complete
   use 'hrsh7th/nvim-compe'
-
-  -- Git integration
-  use 'tpope/vim-fugitive'
 
   ------------------------------------------
   --           Language Specific          --
