@@ -20,25 +20,10 @@ return require('packer').startup(function()
   --         General Core Plugins         --
   ------------------------------------------
   -- tree like nerdtree
-  --   use Ctrl+n to switch
-  --   use Ctrl+] to cd into a dir
   use 'kyazdani42/nvim-tree.lua'
-  require("nvim-tree").setup({
-      view = {
-          adaptive_size = true
-      }
-  })
 
   -- toggleterm
-  --   Ctrl+e will send visual selected code to default terminal
-  --   this can be line selection or block selection
   use "akinsho/toggleterm.nvim"
-  require("toggleterm").setup{
-    open_mapping = [[<c-\>]],
-    direction = 'float'
-  }
-  local options = {noremap = true}
-  vim.api.nvim_set_keymap('v', '<C-e>', ':ToggleTermSendVisualSelection<CR>', options)
 
   -- setup telescope for fuzzy find
   use 'nvim-lua/popup.nvim'
