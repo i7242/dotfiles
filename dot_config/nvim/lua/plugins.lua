@@ -49,16 +49,20 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
 
   ------------------------------------------
-  --                  LSP                 --
+  --         LSP & Auto Completion        --
   ------------------------------------------
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
   require("mason").setup()
   require("mason-lspconfig").setup({
-    ensure_installed = {"sumneko_lua"}
+    ensure_installed = {"bashls", "jdtls", "julials", "lua_ls", "tsserver"}
   })
-  require("lspconfig").sumneko_lua.setup {}
+  require("lspconfig").bashls.setup {}
+  require("lspconfig").jdtls.setup {}
+  require("lspconfig").julials.setup {}
+  require("lspconfig").lua_ls.setup {}
+  require("lspconfig").tsserver.setup {}
 
   -- code auto complete
   use 'hrsh7th/nvim-compe'
