@@ -13,3 +13,4 @@ require("keymaps")
 
 -- More advanced plugins, including themes
 require("plugins")
+require("plugin_config")
