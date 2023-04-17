@@ -8,13 +8,30 @@ local on_attach = function(_, _)
   vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, {})
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {"bashls", "jdtls", "julials", "lua_ls", "tsserver"}
 })
 
-require("lspconfig").bashls.setup {on_attach=on_attach}
-require("lspconfig").jdtls.setup {on_attach=on_attach}
-require("lspconfig").julials.setup {on_attach=on_attach}
-require("lspconfig").lua_ls.setup {on_attach=on_attach}
-require("lspconfig").tsserver.setup {on_attach=on_attach}
+require("lspconfig").bashls.setup {
+  on_attach=on_attach,
+  capabilities=capabilities
+}
+require("lspconfig").jdtls.setup {
+  on_attach=on_attach,
+  capabilities=capabilities
+}
+require("lspconfig").julials.setup {
+  on_attach=on_attach,
+  capabilities=capabilities
+}
+require("lspconfig").lua_ls.setup {
+  on_attach=on_attach,
+  capabilities=capabilities
+}
+require("lspconfig").tsserver.setup {
+  on_attach=on_attach,
+  capabilities=capabilities
+}

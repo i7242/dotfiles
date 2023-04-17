@@ -41,7 +41,9 @@ return require('packer').startup(function()
   use "williamboman/mason-lspconfig.nvim"
 
   -- code auto complete
-  use 'hrsh7th/nvim-compe'
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "L3MON4D3/LuaSnip"
 
   ------------------------------------------
   --           Language Specific          --
