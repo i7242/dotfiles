@@ -9,10 +9,6 @@
     sudo pacman -Syu --needed neofetch tldr neovim
     command -v nv >/dev/null || echo "alias nv='nvim'" >> .zshrc
 
-    [ ! -d "$HOME/.local/share/nvim/site/pack/packer/" ] && \
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
   {{- else if eq .chezmoi.osRelease.id "amzn"}}
 
     echo "installing tools AL2, may require password and confirmation"
@@ -26,10 +22,6 @@
         source .zshrc
         rm nvim.appimage
     fi
-
-    [ ! -d "$HOME/.local/share/nvim/site/pack/packer/" ] && \
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
   {{- else }}
 
