@@ -3,9 +3,7 @@
 Personal dotfiles managed by [chezmoi](https://www.chezmoi.io/).
 
 Need to manage devices:
-- Dell XPS13 Manjaro i3
-- Surface Go 2 Manjaro Gnome
-- RespberryPi 4 Manjaro arm
+- XPS13 & SurfaceGo & RespberryPi4: Manjaro Sway
 - Mac
 - AL2
 
