@@ -1,9 +1,13 @@
 README.md
 
+# ignore personal configs
+# only apply git and sway config when it is manjaro linux
 {{- if eq .chezmoi.os "linux"}}
   {{- if ne .chezmoi.osRelease.id "manjaro"}}
     .gitconfig
+    .config/sway/
   {{- end }}
 {{- else }}
   .gitconfig
+  .config/sway/
 {{- end }}
