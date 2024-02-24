@@ -6,6 +6,10 @@ README.md
   {{- if ne .chezmoi.osRelease.id "manjaro"}}
     .gitconfig
     .config/sway/
+  {{- else }}
+    {{- if ne .chezmoi.hostname "GPD"}}
+      .config/sway/config.d/04-gpd-screen-output.conf
+    {{- end }}
   {{- end }}
 {{- else }}
   .gitconfig

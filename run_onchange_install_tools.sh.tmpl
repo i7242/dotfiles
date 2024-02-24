@@ -6,7 +6,7 @@
 
     echo "installing tools for manjaro linux, may require password and confirmation"
 
-    sudo pacman -Syu --needed neofetch tldr neovim ripgrep
+    sudo pacman -Syu --needed neofetch tldr neovim ripgrep vivaldi
     command -v nv >/dev/null || echo "alias nv='nvim'" >> .zshrc
 
   {{- else if eq .chezmoi.osRelease.id "amzn"}}
