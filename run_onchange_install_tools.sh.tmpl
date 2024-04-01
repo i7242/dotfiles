@@ -6,12 +6,14 @@
 
     echo "installing tools for manjaro linux, may require password and confirmation"
 
-    sudo pacman -Syu --needed neofetch tldr neovim ripgrep fakeroot vivaldi obsidian
+    sudo pacman -Syu --needed neofetch tldr neovim ripgrep fakeroot vivaldi obsidian code
     command -v nv >/dev/null || echo "alias nv='nvim'" >> .zshrc
 
     yay -Syu --needed synology-drive
 
     curl -fsSL https://install.julialang.org | sh
+
+    chsh -s $(which zsh)
 
   {{- else if eq .chezmoi.osRelease.id "amzn"}}
 
