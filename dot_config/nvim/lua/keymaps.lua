@@ -1,3 +1,6 @@
+-- change the leader key to space
+vim.g.mapleader = " "
+
 -- copy to clipboard in normal, visual, select and operator modes
 vim.api.nvim_set_keymap('', '<leader>y', '"+y', {})
 

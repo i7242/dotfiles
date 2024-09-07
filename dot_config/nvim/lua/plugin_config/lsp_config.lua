@@ -12,13 +12,9 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = {"bashls", "jdtls", "julials", "lua_ls", "tsserver"}
+  ensure_installed = {"julials", "lua_ls"}
 })
 
-require("lspconfig").bashls.setup {
-  on_attach=on_attach,
-  capabilities=capabilities
-}
 require("lspconfig").julials.setup {
   on_attach=on_attach,
   capabilities=capabilities
