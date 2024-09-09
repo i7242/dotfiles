@@ -58,7 +58,9 @@ return require('packer').startup(function()
 
   -- colorscheme
   use 'cocopon/iceberg.vim'
-  use 'sainnhe/vim-color-forest-night'
+  use 'sainnhe/everforest'
+  use 'navarasu/onedark.nvim'
+  use 'craftzdog/solarized-osaka.nvim'
 
   -- share code
   use {'krivahtoo/silicon.nvim', run = './install.sh'}
