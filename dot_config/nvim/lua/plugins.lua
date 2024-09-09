@@ -60,4 +60,6 @@ return require('packer').startup(function()
   use 'cocopon/iceberg.vim'
   use 'sainnhe/vim-color-forest-night'
 
+  -- share code
+  use {'krivahtoo/silicon.nvim', run = './install.sh'}
 end)
