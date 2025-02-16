@@ -6,9 +6,15 @@
 
     echo "installing tools for manjaro linux, may require password and confirmation"
 
-    sudo pacman -Syu --needed neofetch tldr neovim fakeroot vivaldi obsidian code racket
-    command -v nv >/dev/null || echo "alias nv='nvim'" >> .zshrc
+    sudo pacman -Syu --needed tldr neovim fakeroot vivaldi obsidian code racket
 
+    # set "xx" as alias for nvim
+    command -v xx >/dev/null || echo "alias xx='nvim'" >> .zshrc
+
+    # install lazyvim
+    git clone https://github.com/LazyVim/starter ~/.config/nvim
+    rm -rf ~/.config/nvim/.git
+    
     yay -Syu --needed synology-drive buttercup-desktop
 
     curl -fsSL https://install.julialang.org | sh
