@@ -1,0 +1,13 @@
+{
+    "workbench.colorTheme": "Quiet Light",
+    "[racket]": {
+        "editor.defaultFormatter": "evzen-wybitul.magic-racket"
+    },
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": true,
+    "julia.executablePath": "/home/i7242/.juliaup/bin/julia",
+    "keyboard.dispatch": "keyCode"
+}
