@@ -4,12 +4,17 @@
 
   {{- if eq .chezmoi.osRelease.id "manjaro"}}
 
+    echo "========================================================================="
     echo "installing tools for manjaro linux, may require password and confirmation"
 
-    sudo pacman -Syu --needed tldr neovim fakeroot vivaldi obsidian code racket
+    # install ohmyzsh first, it may modify the zsh config and env
+    # also, julia will modify zshrc to add alias
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-    # set "xx" as alias for nvim
-    command -v xx >/dev/null || echo "alias xx='nvim'" >> .zshrc
+    sudo pacman -Syu --needed neovim zellij fakeroot obsidian code racket
+
+    # set "cc" as alias for nvim
+    command -v cc >/dev/null || echo "alias cc='nvim'" >> .zshrc
 
     # install lazyvim
     git clone https://github.com/LazyVim/starter ~/.config/nvim
@@ -21,19 +26,8 @@
 
     chsh -s $(which zsh)
 
-  {{- else if eq .chezmoi.osRelease.id "amzn"}}
-
-    echo "installing tools AL2, may require password and confirmation"
-
-    if [ ! -f "$HOME/squashfs-root/usr/bin/nvim" ]; then
-        cd
-        wget https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.appimage
-        chmod +x nvim.appimage
-        ./nvim.appimage --appimage-extract
-        command -v nv >/dev/null || echo "alias nv='~/squashfs-root/usr/bin/nvim'" >> .zshrc
-        source .zshrc
-        rm nvim.appimage
-    fi
+    echo "tools installed or updated"
+    echo "========================================================================="
 
   {{- else }}
 
