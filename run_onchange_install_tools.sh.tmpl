@@ -4,12 +4,18 @@
 
   {{- if eq .chezmoi.osRelease.id "manjaro"}}
 
-    echo "========================================================================="
-    echo "installing tools for manjaro linux, may require password and confirmation"
+    echo "============================================================================"
+    echo "installing tools for manjaro linux, may require password and confirmation..."
 
     # install ohmyzsh first, it may modify the zsh config and env
-    # also, julia will modify zshrc to add alias
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    # julia and others may also modify zshrc to add alias
+    OHMYZSH_DIR="$HOME/.config/zsh/ohmyzsh"
+    if [ ! -d "$OHMYZSH_DIR" ]; then
+      echo "Oh My Zsh not found in $OHMYZSH_DIR. Installing..."
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    else
+      echo "Oh My Zsh already installed at $OHMYZSH_DIR. Skipping..."
+    fi
 
     sudo pacman -Syu --needed neovim zellij fakeroot obsidian code racket
 
@@ -27,11 +33,13 @@
     chsh -s $(which zsh)
 
     echo "tools installed or updated"
-    echo "========================================================================="
+    echo "============================================================================"
 
   {{- else }}
 
-    echo "skip dev tool installation because no matching linux distro ..."
+    echo "============================================================================"
+    echo "Skipping dev tool installation because no matching linux distro ..."
+    echo "============================================================================"
 
   {{- end }}
 
