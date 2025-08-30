@@ -17,6 +17,7 @@
       echo "Oh My Zsh already installed at $OHMYZSH_DIR. Skipping..."
     fi
 
+    # install general tools
     sudo pacman -Syu --needed neovim zellij fakeroot obsidian code racket
 
     # set "cc" as alias for nvim
@@ -25,10 +26,15 @@
     # install lazyvim
     git clone https://github.com/LazyVim/starter ~/.config/nvim
     rm -rf ~/.config/nvim/.git
-    
+ 
+    # tools better installed from yay (for now)
     yay -Syu --needed synology-drive buttercup-desktop
 
+    # use juliaup to install and manage
     curl -fsSL https://install.julialang.org | sh
+
+    # fcitx5 now supported by sway, need to run config and add pinyin manually
+    sudo pacman -Syu --needed fcitx5-im fcitx5-chinese-addons fcitx5-pinyin-zhwiki
 
     chsh -s $(which zsh)
 
